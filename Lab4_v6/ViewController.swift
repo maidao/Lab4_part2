@@ -8,18 +8,28 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
+    
+    
+    @IBOutlet weak var searchKeyWord: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        searchKeyWord.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchKeyWord.resignFirstResponder()
+        return true
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ShowCollectionView")
+        {
+            let collectionView = segue.destination as? CollectionView
+            collectionView?.keyWords = searchKeyWord.text
+        }
+    }
 
 }
 
