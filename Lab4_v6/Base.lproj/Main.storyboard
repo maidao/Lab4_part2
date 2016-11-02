@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="U7E-ww-xaq">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="U7E-ww-xaq">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -18,8 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Key Word" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLR-qE-ySe">
-                                <frame key="frameInset" minX="29" minY="318" width="320" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Key Word" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLR-qE-ySe">
                                 <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -82,7 +81,7 @@
                                         </view>
                                         <size key="customSize" width="100" height="100"/>
                                         <connections>
-                                            <segue destination="Dm9-Xd-zgC" kind="showDetail" identifier="ShowDetailPhoto" id="s3T-m7-z0j"/>
+                                            <segue destination="Dm9-Xd-zgC" kind="show" identifier="ShowDetailPhoto" id="F2z-7i-x8T"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -120,9 +119,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fVz-bI-BLr">
-                                <frame key="frameInset" minX="46" minY="64" width="282" height="188"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fVz-bI-BLr">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="188" id="3TP-t8-KkY"/>
+                                    <constraint firstAttribute="width" constant="282" id="Jlh-eS-3Uf"/>
+                                </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xTB-rw-fDT">
                                 <frame key="frameInset" minY="289" width="375" height="370"/>
@@ -179,9 +180,13 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fVz-bI-BLr" firstAttribute="top" secondItem="pom-V1-MHH" secondAttribute="bottom" constant="44" id="IWt-bY-rVP"/>
+                            <constraint firstItem="fVz-bI-BLr" firstAttribute="centerX" secondItem="q2p-3p-VWi" secondAttribute="centerX" id="sjf-IQ-yk0"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="detailPhoto" destination="fVz-bI-BLr" id="rO5-X7-BFE"/>
+                        <outlet property="detailPhoto" destination="fVz-bI-BLr" id="kNI-eJ-jMo"/>
                         <outlet property="infoCollectionView" destination="eyQ-q4-S7t" id="Ts0-6B-Swc"/>
                         <outlet property="infoPhoto" destination="xTB-rw-fDT" id="6nH-tW-QLc"/>
                         <outlet property="loading" destination="509-m0-HDf" id="gO5-Ai-gjO"/>

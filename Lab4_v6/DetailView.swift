@@ -10,22 +10,22 @@ import UIKit
 
 class DetailView: UIViewController {
 
-    @IBOutlet weak var detailPhoto: UIImage!
+    @IBOutlet var detailPhoto: UIImageView!
    
-    @IBOutlet weak var namePhoto: UILabel!
+    @IBOutlet  var namePhoto: UILabel!
     
-    @IBOutlet weak var infoPhoto: UITextView!
+    @IBOutlet  var infoPhoto: UITextView!
     
-    @IBOutlet weak var infoCollectionView: UICollectionView!
+    @IBOutlet  var infoCollectionView: UICollectionView!
     
-    @IBOutlet weak var loading: UIActivityIndicatorView!
-    
+    @IBOutlet  var loading: UIActivityIndicatorView!
+    var detailImage = UIImage()
     var prePhoto:FlickrPhoto = FlickrPhoto()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loading.startAnimating()
-
+        //self.loading.startAnimating()
+        detailPhoto.image = detailImage
     }
 
     func getInfoFlickrPhoto (id: String)

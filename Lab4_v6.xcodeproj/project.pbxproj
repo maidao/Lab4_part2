@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D8BA24C1DC9C0FE00D7715A /* IMG_0002.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7D8BA24B1DC9C0FE00D7715A /* IMG_0002.PNG */; };
 		B1468B221DC705E00019EEBF /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1468B211DC705E00019EEBF /* DetailView.swift */; };
 		B1468B281DC70F450019EEBF /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1468B271DC70F450019EEBF /* DetailCell.swift */; };
 		B15BBD071DC59058001C79CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15BBD061DC59058001C79CE /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D8BA24B1DC9C0FE00D7715A /* IMG_0002.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0002.PNG; sourceTree = "<group>"; };
 		B1468B211DC705E00019EEBF /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		B1468B271DC70F450019EEBF /* DetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		B15BBD031DC59058001C79CE /* Lab4_v6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lab4_v6.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 		B15BBD051DC59058001C79CE /* Lab4_v6 */ = {
 			isa = PBXGroup;
 			children = (
+				7D8BA24B1DC9C0FE00D7715A /* IMG_0002.PNG */,
 				B15BBD061DC59058001C79CE /* AppDelegate.swift */,
 				B15BBD081DC59058001C79CE /* ViewController.swift */,
 				B15BBD181DC5937F001C79CE /* CollectionView.swift */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B15BBD111DC59058001C79CE /* LaunchScreen.storyboard in Resources */,
+				7D8BA24C1DC9C0FE00D7715A /* IMG_0002.PNG in Resources */,
 				B15BBD0E1DC59058001C79CE /* Assets.xcassets in Resources */,
 				B15BBD0C1DC59058001C79CE /* Main.storyboard in Resources */,
 			);
@@ -201,6 +205,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -250,6 +255,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

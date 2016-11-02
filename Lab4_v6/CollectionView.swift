@@ -9,7 +9,6 @@
 import UIKit
 
 class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
     var keyWords: String!
     var photosArray = [FlickrPhoto]()
     
@@ -37,7 +36,7 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
     func handleNotification()
     {
         NotificationCenter.default.addObserver(forName: NSNotification.Name("photoDownloaded"), object:
-            nil, queue: nil) { notification in
+        nil, queue: nil) { notification in
             let photo = notification.object as! FlickrPhoto
             print("received \(photo.id) -- num \(photo.num)")
             self.photosCollectionView.reloadItems(at: [IndexPath(row: photo.num, section: 0)])
@@ -54,16 +53,16 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellCollection", for: indexPath) as! ACell
-       // cell.addSubviews()
+        // cell.addSubviews()
         DispatchQueue.main.async(execute:
-        {
-            if let image = self.photosArray[indexPath.row].image
             {
-                cell.imageView.image = image
-                self.previousPhotosArray.append(image)
-                self.indexDetail.append(indexPath.row)
-                
-            }
+                if let image = self.photosArray[indexPath.row].image
+                {
+                    cell.imageView.image = image
+                    self.previousPhotosArray.append(image)
+                    self.indexDetail.append(indexPath.row)
+                    
+                }
         })
         
         if (cell.imageView.layer.animationKeys() == nil)
@@ -77,25 +76,25 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-//    {
-//        
-////        DispatchQueue.main.async(execute:
-////            {
-////                if let image = self.photosArray[indexPath.row].image
-////                {
-////                    self.previousPhotosArray.append(image)
-////                    print(self.previousPhotosArray)
-////                    
-////                }
-////        })
-////            
-////        
-//
-//        
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    //    {
+    //
+    ////        DispatchQueue.main.async(execute:
+    ////            {
+    ////                if let image = self.photosArray[indexPath.row].image
+    ////                {
+    ////                    self.previousPhotosArray.append(image)
+    ////                    print(self.previousPhotosArray)
+    ////
+    ////                }
+    ////        })
+    ////
+    ////
+    //
+    //
+    //    }
     
-
+    
     
     
     func getIdFlickrPhotos(keyword: String) {
@@ -169,37 +168,36 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
         for photo in photosArray
         {
             DispatchQueue.global(qos: .background).async
-            {
-                photo.getImage()
-                
-                if (self.photosArray.count == self.perPage)
                 {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 10)
+                    photo.getImage()
+                    
+                    if (self.photosArray.count == self.perPage)
                     {
-                        self.currentPage = self.currentPage + 1
-                        self.searchFlickr(tag: self.currentPage)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 10)
+                        {
+                            self.currentPage = self.currentPage + 1
+                            self.searchFlickr(tag: self.currentPage)
+                        }
+                        
                     }
-                
-                }
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-            performSegue(withIdentifier: "ShowDetailPhoto", sender: indexPath)
-    }
 
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        assert(sender as? UICollectionViewCell != nil, "sender is not a collection view")
-        
         if (segue.identifier == "ShowDetailPhoto")
         {
-       
-            let indexPath = sender
-            let detailView = segue.destination as? DetailView
-            detailView?.detailPhoto = self.previousPhotosArray[indexPath]
+            let indexImage = self.photosCollectionView.indexPath(for: sender as! UICollectionViewCell)?.row
+                let detailView = segue.destination as! DetailView
+            detailView.detailImage = photosArray[indexImage!].image
+            
+            
         }
         else
         {
@@ -209,6 +207,6 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     
-
+    
 }
 
