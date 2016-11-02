@@ -20,6 +20,8 @@ class DetailView: UIViewController {
     
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
+    var prePhoto:FlickrPhoto = FlickrPhoto()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loading.startAnimating()
