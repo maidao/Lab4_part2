@@ -19,33 +19,41 @@ class DetailView: UIViewController {
     @IBOutlet  var infoCollectionView: UICollectionView!
     
     @IBOutlet  var loading: UIActivityIndicatorView!
+    
     var detailImage = UIImage()
-    var prePhoto:FlickrPhoto = FlickrPhoto()
+    var nameImage = String()
+    var urlString : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.loading.startAnimating()
+   //     self.loading.startAnimating()
         detailPhoto.image = detailImage
+        namePhoto.text = nameImage
     }
 
     func getInfoFlickrPhoto (id: String)
     {
-//        let id: String!
-//        let stringUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=ac8085afa1dad48165a624a579e774c4&format=json&nojsoncallback=1&photo_id=\(id)"
-//        let encodedStringUrl = stringUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-//        
-//        let infoUrl = URL(string: encodedStringUrl!)
-//        
-//        let jsonString = try String(contentsOf: infoUrl!)
-//        
-//        let jsonData = jsonString.data(using: .utf8)
-//        
-//        let jsonJSON = try JSONSerialization.jsonObject(with: jsonData!, options: [])
-//        
-//        if let dictionary = jsonJSON as? [String: Any]
-//        {
-//            let infoPhoto = dictionary["photo"] as? Any
-//        }
+        urlString = "https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=ac8085afa1dad48165a624a579e774c4&format=json&nojsoncallback=1&photo_id=\(nameImage)"
+        
+        let encodedStringUrl = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        let infoUrl = URL(string: encodedStringUrl!)
+        
+        let jsonString = try? String(contentsOf: infoUrl!)
+        
+        let jsonData = jsonString?.data(using: .utf8)
+        
+        do {
+            let object = try JSONSerialization.jsonObject(with: jsonData!, options: .allowFragments)
+            if let dictionary = object as? [String: AnyObject] {
+                let infoPhto = dictionary["photo"] as? Any
+            }
+        } catch {
+            // Handle Error
+        }
+
+
+        
         
         
     }

@@ -18,15 +18,16 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
     var currentPage = 1
     var perPage = 50
     var currentKeyword = "Bird"
-    var previousPhotosArray = [UIImage]()
-    var indexDetail = [Int]()
+//    var previousPhotosArray = [UIImage]()
+//    var indexDetail = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         photosCollectionView.delegate = self
         photosCollectionView.dataSource = self
         self.myActive.startAnimating()
-        if let searchCondition:String = keyWords{
+        if let searchCondition:String = keyWords
+        {
             getIdFlickrPhotos(keyword:searchCondition)
         }
         
@@ -53,15 +54,15 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellCollection", for: indexPath) as! ACell
-        // cell.addSubviews()
+        cell.addSubviews()
         DispatchQueue.main.async(execute:
             {
                 if let image = self.photosArray[indexPath.row].image
                 {
                     cell.imageView.image = image
-                    self.previousPhotosArray.append(image)
-                    self.indexDetail.append(indexPath.row)
-                    
+//                    self.previousPhotosArray.append(image)
+//                    self.indexDetail.append(indexPath.row)
+//                    
                 }
         })
         
@@ -75,27 +76,7 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         return cell
     }
-    
-    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-    //    {
-    //
-    ////        DispatchQueue.main.async(execute:
-    ////            {
-    ////                if let image = self.photosArray[indexPath.row].image
-    ////                {
-    ////                    self.previousPhotosArray.append(image)
-    ////                    print(self.previousPhotosArray)
-    ////
-    ////                }
-    ////        })
-    ////
-    ////
-    //
-    //
-    //    }
-    
-    
-    
+ 
     
     func getIdFlickrPhotos(keyword: String) {
         
@@ -194,8 +175,9 @@ class CollectionView: UIViewController, UICollectionViewDelegate, UICollectionVi
         if (segue.identifier == "ShowDetailPhoto")
         {
             let indexImage = self.photosCollectionView.indexPath(for: sender as! UICollectionViewCell)?.row
-                let detailView = segue.destination as! DetailView
+            let detailView = segue.destination as! DetailView
             detailView.detailImage = photosArray[indexImage!].image
+            detailView.nameImage = photosArray[indexImage!].id
             
             
         }
