@@ -16,6 +16,8 @@ class FlickrPhoto {
     var farm : Int!
     var image : UIImage!
     var num: Int!
+    var description: String!
+    var keywordsArray:[String]!
     
     init() {
         
